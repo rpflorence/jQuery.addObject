@@ -21,7 +21,9 @@ jQuery.addObject = function(name, object){
 			return this;
 		}
 		if (instance) return instance;
-		this.data(name, new object(this.selector, arg));
+		options = $.extend({}, jQuery.fn[name].defaults, arg);
+		this.data(name, new object(this.selector, options));
 		return this;
 	};
+	jQuery.fn[name].defaults = {};
 };
